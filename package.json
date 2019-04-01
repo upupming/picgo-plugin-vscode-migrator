@@ -1,6 +1,6 @@
 {
   "name": "picgo-plugin-vscode-migrator",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Import images from vs-picgo",
   "main": "dist/index.js",
   "publishConfig": {
