@@ -1,29 +1,29 @@
 import picgo from 'picgo'
-import { Notification } from 'electron'
+// import { Notification } from 'electron'
 import { readFileSync, writeFileSync } from 'fs'
 import os from 'os'
 import path from 'path'
 
 const vsLogPath = path.resolve(os.homedir(), 'vs-picgo-log.json')
 
-function showNotificaiton(guiApi, text: string) {
-  // guiApi.showNotificaiton({
-  //   title: 'vscode-migrator',
-  //   body: text
-  // })
-  const notification = new Notification({
+function showNotification(guiApi, text: string) {
+  guiApi.showNotification({
     title: 'vscode-migrator',
     body: text
   })
-  notification.show()
+  // const notification = new Notification({
+  //   title: 'vscode-migrator',
+  //   body: text
+  // })
+  // notification.show()
 }
 
 function syntaxError(guiApi) {
-  showNotificaiton(guiApi, `The vs-picgo log file ${vsLogPath} has syntax error, ` + 
+  showNotification(guiApi, `The vs-picgo log file ${vsLogPath} has syntax error, ` + 
   `please fix the error by yourself`)
 }
 function fileNotExists(guiApi) {
-  showNotificaiton(guiApi, `The vs-picgo log file ${vsLogPath} doesn't exists`)
+  showNotification(guiApi, `The vs-picgo log file ${vsLogPath} doesn't exists`)
 }
 
 function getPicgoImagesJson(ctx: picgo, guiApi) {
@@ -32,7 +32,7 @@ function getPicgoImagesJson(ctx: picgo, guiApi) {
     let data = JSON.parse(readFileSync(picgoConfigPath, 'utf8'))
     return data.uploaded
   } catch (err) {
-    showNotificaiton(guiApi, 'Read PicGo config failed')
+    showNotification(guiApi, 'Read PicGo config failed')
     console.error(err)
   }
 }
@@ -44,7 +44,7 @@ function writePicgoImagesJson(ctx: picgo, guiApi, uploaded) {
     data.uploaded = uploaded
     writeFileSync(picgoConfigPath, JSON.stringify(data, null, 2), 'utf8')
   } catch (err) {
-    showNotificaiton(guiApi, 'Write PicGo config failed')
+    showNotification(guiApi, 'Write PicGo config failed')
     console.error(err)
   }
 }
@@ -57,7 +57,7 @@ const migrateFromVsPicgo = {
   label: 'Import images from vs-picgo',
   async handle (ctx: picgo, guiApi) {
     try {
-      showNotificaiton(guiApi, 'Started importing images from vs-picgo')
+      showNotification(guiApi, 'Started importing images from vs-picgo')
       let data = readFileSync(vsLogPath, 'utf8')
       let log = JSON.parse(data)
       let picgoUploaded = getPicgoImagesJson(ctx, guiApi)
@@ -68,7 +68,7 @@ const migrateFromVsPicgo = {
       })
       writePicgoImagesJson(ctx, guiApi, picgoUploaded)
       reCreateVsLogFile()
-      showNotificaiton(guiApi, `Successfully imported ${imagesImported} images from vs-picgo`)
+      showNotification(guiApi, `Successfully imported ${imagesImported} images from vs-picgo`)
     } catch (err) {
       if (err.message.includes('ENOENT: no such file or directory')) {
         fileNotExists(guiApi)
@@ -77,7 +77,7 @@ const migrateFromVsPicgo = {
         syntaxError(guiApi)
       }
       else {
-        showNotificaiton(
+        showNotification(
           guiApi,
           `Error happened when importing: ${err || ''}`
         );
