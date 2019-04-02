@@ -1,4 +1,4 @@
-// import picgo from 'picgo'
+import picgo from 'picgo'
 // import { Notification } from 'electron'
 import { readFileSync, writeFileSync } from 'fs'
 import os from 'os'
@@ -62,6 +62,7 @@ const migrateFromVsPicgo = {
       let log = JSON.parse(data)
       let picgoUploaded = getPicgoImagesJson(ctx, guiApi)
       let imagesImported = 0
+      // Now `picBed` will be only `uploaded`, future changes may be adopted
       Object.keys(log).forEach(picBed => {
         picgoUploaded = picgoUploaded.concat(log[picBed])
         imagesImported += log[picBed].length

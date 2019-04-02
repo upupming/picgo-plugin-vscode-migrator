@@ -21,15 +21,15 @@ Before importing:
 
 ```json
 {
-  "smms": [
+  "uploaded": [
     {
-      "fileName": "vs-picgo-demo.gif",
-      "width": 1030,
-      "height": 776,
-      "extname": ".gif",
-      "imgUrl": "https://i.loli.net/2019/04/02/5ca253456c4bd.gif",
+      "fileName": "20190402103137.png",
+      "width": 405,
+      "height": 289,
+      "extname": ".png",
+      "imgUrl": "https://i.loli.net/2019/04/02/5ca2c98c583c0.png",
       "type": "smms",
-      "id": "f37b4678-ea3b-402d-be64-7fd011cc32a8"
+      "id": "1ce5929e-31a7-4b72-b32b-eaf1eb2e06c3"
     }
   ]
 }
