@@ -1,4 +1,4 @@
-import picgo from 'picgo'
+// import picgo from 'picgo'
 // import { Notification } from 'electron'
 import { readFileSync, writeFileSync } from 'fs'
 import os from 'os'
@@ -6,7 +6,7 @@ import path from 'path'
 
 const vsLogPath = path.resolve(os.homedir(), 'vs-picgo-log.json')
 
-function showNotification(guiApi, text: string) {
+function showNotification (guiApi, text: string) {
   guiApi.showNotification({
     title: 'vscode-migrator',
     body: text
@@ -18,15 +18,15 @@ function showNotification(guiApi, text: string) {
   // notification.show()
 }
 
-function syntaxError(guiApi) {
-  showNotification(guiApi, `The vs-picgo log file ${vsLogPath} has syntax error, ` + 
+function syntaxError (guiApi) {
+  showNotification(guiApi, `The vs-picgo log file ${vsLogPath} has syntax error, ` +
   `please fix the error by yourself`)
 }
-function fileNotExists(guiApi) {
+function fileNotExists (guiApi) {
   showNotification(guiApi, `The vs-picgo log file ${vsLogPath} doesn't exists`)
 }
 
-function getPicgoImagesJson(ctx: picgo, guiApi) {
+function getPicgoImagesJson (ctx: picgo, guiApi) {
   try {
     const picgoConfigPath = path.resolve(ctx.baseDir, 'data.json')
     let data = JSON.parse(readFileSync(picgoConfigPath, 'utf8'))
@@ -37,7 +37,7 @@ function getPicgoImagesJson(ctx: picgo, guiApi) {
   }
 }
 
-function writePicgoImagesJson(ctx: picgo, guiApi, uploaded) {
+function writePicgoImagesJson (ctx: picgo, guiApi, uploaded) {
   try {
     const picgoConfigPath = path.resolve(ctx.baseDir, 'data.json')
     let data = JSON.parse(readFileSync(picgoConfigPath, 'utf8'))
@@ -49,7 +49,7 @@ function writePicgoImagesJson(ctx: picgo, guiApi, uploaded) {
   }
 }
 
-function reCreateVsLogFile() {
+function reCreateVsLogFile () {
   writeFileSync(vsLogPath, JSON.stringify({}))
 }
 
@@ -72,18 +72,16 @@ const migrateFromVsPicgo = {
     } catch (err) {
       if (err.message.includes('ENOENT: no such file or directory')) {
         fileNotExists(guiApi)
-      }
-      else if (err instanceof SyntaxError) {
+      } else if (err instanceof SyntaxError) {
         syntaxError(guiApi)
-      }
-      else {
+      } else {
         showNotification(
           guiApi,
           `Error happened when importing: ${err || ''}`
-        );
-        console.error(err);
+        )
+        console.error(err)
       }
-    } 
+    }
   }
 }
 
@@ -92,7 +90,7 @@ const guiMenu = ctx => {
 }
 
 module.exports = (ctx) => {
-  const register = () => {}
+  const register = () => { }
   return {
     register,
     guiMenu

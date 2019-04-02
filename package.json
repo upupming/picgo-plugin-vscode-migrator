@@ -13,7 +13,14 @@
     "dev": "tsc -w -p .",
     "patch": "npm version patch && git push origin master && git push origin --tags",
     "minor": "npm version minor && git push origin master && git push origin --tags",
-    "major": "npm version major && git push origin master && git push origin --tags"
+    "major": "npm version major && git push origin master && git push origin --tags",
+    "fix": "standard --fix **/*.ts"
+  },
+  "standard": {
+    "parser": "typescript-eslint-parser",
+    "plugins": [
+      "typescript"
+    ]
   },
   "keywords": [
     "picgo",
@@ -34,9 +41,12 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
+    "eslint-plugin-typescript": "^0.14.0",
     "picgo": "^1.2.0",
+    "standard": "^12.0.1",
     "tslint": "^5.10.0",
     "tslint-config-standard": "^7.1.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.0.3",
+    "typescript-eslint-parser": "^22.0.0"
   }
 }
