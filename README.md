@@ -9,11 +9,14 @@ Import images from `vs-picgo` to PicGo.
 
 ## Step 1: upload images using [`vs-picgo`](https://github.com/Spades-S/vs-picgo/)
 
+<details>
 <img src=https://i.loli.net/2019/04/02/5ca25272d0e84.gif height=400>
+</details>
 
 ## Step 2: import images from `vs-picgo`
 
-Before importing:
+<details>
+<summary>Before importing</summary>
 
 <img src=https://i.loli.net/2019/04/02/5ca252a4d1eb6.png height=300>
 
@@ -35,11 +38,14 @@ Before importing:
 }
 ```
 
+</details>
+
 Now run `picgo-plugin-vscode-migrator` to import:
 
 <img src=https://i.loli.net/2019/04/02/5ca2565f51930.gif height=300>
 
-After imported:
+<details>
+<summary>After imported</summary>
 
 `C:\Users\Doraeming\vs-picgo-log.json`:
 
