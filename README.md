@@ -1,5 +1,7 @@
 ## picgo-plugin-vscode-migrator
 
+:warning: This plugin is useless now, please see [#1](https://github.com/upupming/picgo-plugin-vscode-migrator/issues/1).
+
 <a href="https://www.npmjs.com/package/picgo-plugin-vscode-migrator"><img src="https://img.shields.io/npm/v/picgo-plugin-vscode-migrator.svg?style=flat-square" alt="npm"></a>
 <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square" alt="JavaScript Style Guide"></a>
 <a href="https://travis-ci.com/upupming/picgo-plugin-vscode-migrator/builds"><img src="https://img.shields.io/travis/com/upupming/picgo-plugin-vscode-migrator.svg?style=popout-square" alt="travis build status"></a>
